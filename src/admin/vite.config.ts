@@ -3,13 +3,12 @@ import type { UserConfig } from 'vite';
 
 export default (config: UserConfig) => {
   return mergeConfig(config, {
-    resolve: {
-      alias: {
-        '@': '/src',
-      },
-    },
     server: {
-       allowedHosts: true,
+      allowedHosts: ['.railway.app'],       // or ['.railway.app']
+      hmr: {
+        clientPort: 443,
+        protocol: 'wss',
+      },
     },
   });
 };
